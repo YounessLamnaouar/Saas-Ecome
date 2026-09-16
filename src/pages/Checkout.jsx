@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 // TODO: replace with your real WhatsApp Business number (country code, no + and no spaces)
-const STORE_WHATSAPP = "212600000000";
+const STORE_WHATSAPP = "212694039188";
 // TODO: replace with your real store email
-const STORE_EMAIL = "orders@yourstore.com";
+const STORE_EMAIL = "youneslam12@gmail.com";
 
 export default function Checkout() {
   const { cart, cartTotal, clearCart } = useCart();
