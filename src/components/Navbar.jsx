@@ -28,7 +28,7 @@ export default function Navbar({ transparent = true }) {
   };
 
   return (
-    <nav className={`relative z-50 ${transparent ? "" : "bg-gray-900"}`} data-aos="fade-down">
+    <nav className={`relative z-50 ${transparent ? "" : "bg-gray-900"}`}>
       <div className="container mx-auto px-4 md:px-8 lg:px-16 py-6">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-white text-2xl font-bold tracking-tight">
