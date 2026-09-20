@@ -12,6 +12,7 @@ import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import Navbar from "./components/Navbar";
 import Collection from "./components/Collection";
+import LikedProducts from "./pages/LikedProducts";
 
 export default function App() {
   useEffect(() => {
@@ -30,13 +31,13 @@ export default function App() {
           path="/"
           element={
             <>
-              <Navbar transparent={false} bg="bg-amber-600" />
               <Home />
               <Footer />
             </>
           }
         />
         <Route path="/shop" element={<PageLayout><Shop /></PageLayout>} />
+        <Route path="/liked" element={<PageLayout><LikedProducts /></PageLayout>} />
         <Route path="/collection" element={<PageLayout><Collection /></PageLayout>} />
         <Route path="/product/:id" element={<PageLayout><ProductDetail /></PageLayout>} />
         <Route path="/cart" element={<PageLayout><Cart /></PageLayout>} />

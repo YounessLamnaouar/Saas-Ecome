@@ -6,10 +6,12 @@ import Products from "../components/Products";
 import Collection from "../components/Collection";
 import Deals from "../components/Deals";
 import Cards from "../components/Cards";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
     <>
+      <Navbar transparent={false} bg="bg-amber-600" />
       <Hero />
       <Category />
       <Order />

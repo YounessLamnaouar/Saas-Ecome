@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
 import { Heart, ShoppingCart } from "lucide-react";
+import LikeButton from "./LikeButton";
 
 export default function Cards() {
   const [currentPage, setCurrentPage] = useState(0);
-  const [liked, setLiked] = useState({});
   const { addToCart } = useCart();
 
   const productsPerRow = 5;
@@ -24,9 +24,6 @@ export default function Cards() {
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
-  const toggleLike = (id) => {
-    setLiked((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
 
   return (
     <section className="py-20 bg-white" data-aos="fade-up">
@@ -45,12 +42,7 @@ export default function Cards() {
               <Link to={`/product/${product.id}`} className="relative h-56 overflow-hidden bg-gray-50 block">
                 <img src={product.image} alt={product.name} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 p-4" />
                 <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                  <button
-                    onClick={(e) => { e.preventDefault(); toggleLike(product.id); }}
-                    className="bg-white rounded-full p-2 shadow-md hover:scale-110 transition-transform duration-200"
-                  >
-                    <Heart size={16} className={liked[product.id] ? 'fill-red-500 stroke-red-500' : 'stroke-gray-700'} />
-                  </button>
+                  <LikeButton product={product} className="bg-white rounded-full p-2 shadow-md hover:scale-110 transition-transform duration-200" />
                   <button
                     onClick={(e) => { e.preventDefault(); addToCart(product, 1); }}
                     className="bg-white rounded-full p-2 shadow-md hover:scale-110 transition-transform duration-200"

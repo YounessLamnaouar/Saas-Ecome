@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { Trash2 } from "lucide-react";
+import LikeButton from "../components/LikeButton";
 
 export default function Cart() {
   const { cart, removeFromCart, updateQty, cartTotal } = useCart();
@@ -40,6 +41,7 @@ export default function Cart() {
                   <span className="w-6 text-center">{item.qty}</span>
                   <button onClick={() => updateQty(item.id, item.qty + 1)} className="w-8 h-8 border rounded-lg hover:bg-gray-100 font-bold">+</button>
                 </div>
+                <LikeButton product={item} size={18} className="p-2" />
                 <button onClick={() => removeFromCart(item.id)} className="p-2 text-gray-400 hover:text-red-500 transition-colors">
                   <Trash2 size={18} />
                 </button>

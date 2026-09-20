@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
 import { Heart, RefreshCcw, ShoppingCart, Star } from "lucide-react";
+import LikeButton from "./LikeButton";
 
 export default function Deals() {
   const { addToCart } = useCart();
@@ -52,9 +53,7 @@ export default function Deals() {
                     <ShoppingCart size={12} />
                     Add To Cart
                   </button>
-                  <button className="p-2 border rounded-lg hover:bg-gray-100 transition-all">
-                    <Heart size={16} />
-                  </button>
+                  <LikeButton product={dealProduct} className="p-2 border rounded-lg hover:bg-gray-100 transition-all" />
                   <button className="p-2 border rounded-lg hover:bg-gray-100 transition-all">
                     <RefreshCcw size={16} />
                   </button>

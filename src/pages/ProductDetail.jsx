@@ -4,6 +4,7 @@ import { getProductById, products } from "../data/products";
 import { useCart } from "../context/CartContext";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import ProductCard from "../components/ProductCard";
+import LikeButton from "../components/LikeButton";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -11,7 +12,6 @@ export default function ProductDetail() {
   const { addToCart } = useCart();
   const [qty, setQty] = useState(1);
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0]);
-  const [liked, setLiked] = useState(false);
 
   if (!product) {
     return (
@@ -99,12 +99,7 @@ export default function ProductDetail() {
                 <ShoppingCart size={18} />
                 Add to Cart
               </button>
-              <button
-                onClick={() => setLiked(!liked)}
-                className="p-3 border rounded-lg hover:bg-gray-100 transition-all"
-              >
-                <Heart size={20} className={liked ? "fill-red-500 stroke-red-500" : "stroke-gray-700"} />
-              </button>
+              <LikeButton product={product} size={20} className="p-3 border rounded-lg hover:bg-gray-100 transition-all" />
             </div>
           </div>
         </div>

@@ -1,15 +1,15 @@
-import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { Heart, Menu, Search, ShoppingBag, X } from "lucide-react";
 
-export default function Navbar({ transparent = true , bg = "bg-gray-900"}) {
+export default function Navbar({ transparent = true, bg = "bg-gray-900" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeLink, setActiveLink] = useState("Home");
   const [hoveredLink, setHoveredLink] = useState(null);
-  const { cartCount } = useCart();
+  const { cartCount, likedProducts } = useCart();
   const navigate = useNavigate();
 
   const navLinks = [
@@ -34,7 +34,6 @@ export default function Navbar({ transparent = true , bg = "bg-gray-900"}) {
     if (activeNavLink) {
       setActiveLink(activeNavLink.name);
     }
-    
   }, [activeLink]);
 
   return (
@@ -67,7 +66,10 @@ export default function Navbar({ transparent = true , bg = "bg-gray-900"}) {
           <div className="flex items-center gap-4 text-white">
             <div className="relative flex items-center">
               {isSearchOpen && (
-                <form onSubmit={handleSearchSubmit} className="absolute right-8 top-1/2 -translate-y-1/2">
+                <form
+                  onSubmit={handleSearchSubmit}
+                  className="absolute right-8 top-1/2 -translate-y-1/2"
+                >
                   <input
                     autoFocus
                     type="text"
@@ -86,12 +88,25 @@ export default function Navbar({ transparent = true , bg = "bg-gray-900"}) {
                 {isSearchOpen ? <X size={20} /> : <Search size={20} />}
               </button>
             </div>
-            <Link to="/cart" className="hover:opacity-70 transition-opacity relative">
+            <Link
+              to="/liked"
+              className="hover:opacity-70 transition-opacity relative"
+            >
+              <Heart size={20} />
+              <span className="absolute -top-2 right-2 bg-white text-gray-900 text-xs rounded-full w-4 h-4 flex items-center justify-center font-bold">
+                {likedProducts.length}
+              </span>
+            </Link>
+            <Link
+              to="/cart"
+              className="hover:opacity-70 transition-opacity relative"
+            >
               <ShoppingBag size={20} />
               <span className="absolute -top-2 right-2 bg-white text-gray-900 text-xs rounded-full w-4 h-4 flex items-center justify-center font-bold">
                 {cartCount}
               </span>
             </Link>
+
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden hover:opacity-70 transition-opacity"

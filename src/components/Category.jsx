@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { categories, products } from "../data/products";
+import LikeButton from "./LikeButton";
 
 export default function Category() {
   const [activeTab, setActiveTab] = useState("women");
@@ -58,6 +59,7 @@ export default function Category() {
                 <span className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white text-gray-900 px-4 py-2 rounded-full text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300">
                   Quick view
                 </span>
+                <LikeButton product={product} className="absolute top-3 right-3 z-10 bg-white rounded-full p-2 shadow-md hover:scale-110 transition-transform" />
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-gray-900 mb-1">
