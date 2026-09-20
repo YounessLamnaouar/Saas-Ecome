@@ -3,13 +3,15 @@ import { Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Footer from "./components/Footer";
-import PageLayout from "./components/PageLayout";
+import PageLayout from "./layout/PageLayout";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
+import Navbar from "./components/Navbar";
+import Collection from "./components/Collection";
 
 export default function App() {
   useEffect(() => {
@@ -28,6 +30,25 @@ export default function App() {
           path="/"
           element={
             <>
+              <Navbar transparent={false} bg="bg-amber-600" />
+              <Home />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/shop" element={<PageLayout><Shop /></PageLayout>} />
+        <Route path="/collection" element={<PageLayout><Collection /></PageLayout>} />
+        <Route path="/product/:id" element={<PageLayout><ProductDetail /></PageLayout>} />
+        <Route path="/cart" element={<PageLayout><Cart /></PageLayout>} />
+        <Route path="/checkout" element={<PageLayout><Checkout /></PageLayout>} />
+        <Route path="/order-confirmation" element={<PageLayout><OrderConfirmation /></PageLayout>} />
+      </Routes>
+
+      {/* <Routes>
+        <Route
+          path="/"
+          element={
+            <>
               <Home />
               <Footer />
             </>
@@ -38,7 +59,7 @@ export default function App() {
         <Route path="/cart" element={<PageLayout><Cart /></PageLayout>} />
         <Route path="/checkout" element={<PageLayout><Checkout /></PageLayout>} />
         <Route path="/order-confirmation" element={<PageLayout><OrderConfirmation /></PageLayout>} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 }

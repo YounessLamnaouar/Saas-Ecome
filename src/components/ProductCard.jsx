@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { Heart, ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, i }) {
   const { addToCart } = useCart();
   const [liked, setLiked] = useState(false);
 
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100">
+    <div data-aos="zoom-in" data-aos-delay={i * 100} className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100">
       <Link to={`/product/${product.id}`} className="block relative h-56 bg-gray-50 overflow-hidden">
         <img
           src={product.image}
