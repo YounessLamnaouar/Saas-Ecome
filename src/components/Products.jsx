@@ -22,13 +22,25 @@ export default function Products() {
         setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides)
     }
     const toggleLike = (id) => {
-        setLiked((prev) => ({ ...prev, [id]: !prev[id] }))
+        // setLiked((prev) => ({ ...prev, [id]: !prev[id] }))
+        // use the functions from CartContext to add/remove liked products
+        if (liked[id]) {
+            setLiked((prev) => ({ ...prev, [id]: false }))
+            removeFromLikedProducts(id)
+        } else {
+            setLiked((prev) => ({ ...prev, [id]: true }))
+            const product = products.find((p) => p.id === id)
+            if (product) {
+                addToLikedProducts(product)
+            }
+        }
     }
     const colorClasses = {
         black: 'bg-black',
         blue: 'bg-blue-300',
         brown: 'bg-orange-300',
     }
+
 
   return (
     <div className="py-20 bg-white" data-aos="fade-up">

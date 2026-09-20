@@ -86,9 +86,9 @@ export default function Collection() {
 
 
   return (
-    <section className="py-6 bg-white overflow-hidden" id="collection">
-        <div className="container mx-auto px-6 md:px-10">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-10" data-aos="fade-down">
+    <section className="py-16 bg-gray-50 min-h-screen">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-10">
                 Shop by <span className="text-gray-600">Collection</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 auto-rows-auto">

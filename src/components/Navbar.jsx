@@ -1,9 +1,9 @@
 import { Menu, Search, ShoppingBag, X } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
-export default function Navbar({ transparent = true }) {
+export default function Navbar({ transparent = true , bg = "bg-gray-900"}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,7 +15,7 @@ export default function Navbar({ transparent = true }) {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Shop", path: "/shop" },
-    { name: "Collection", path: "/#collection" },
+    { name: "Collection", path: "/collection" },
   ];
 
   const handleSearchSubmit = (e) => {
@@ -27,8 +27,18 @@ export default function Navbar({ transparent = true }) {
     }
   };
 
+  useEffect(() => {
+    // Update active link based on current path
+    const currentPath = window.location.pathname;
+    const activeNavLink = navLinks.find((link) => link.path === currentPath);
+    if (activeNavLink) {
+      setActiveLink(activeNavLink.name);
+    }
+    
+  }, [activeLink]);
+
   return (
-    <nav className={`relative z-50 ${transparent ? "" : "bg-gray-900"}`}>
+    <nav className={`relative z-50 ${transparent ? "" : bg}`}>
       <div className="container mx-auto px-4 md:px-8 lg:px-16 py-6">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-white text-2xl font-bold tracking-tight">

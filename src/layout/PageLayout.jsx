@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 // Shared layout for every page except Home (Home has its own Hero+Navbar setup)
 export default function PageLayout({ children }) {
