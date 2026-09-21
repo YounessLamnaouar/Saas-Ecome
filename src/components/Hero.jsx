@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 export default function Hero() {
   return (
     <div className="min-h-screen transition-colors duration-1000 overflow-hidden bg-amber-600">
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="container mx-auto px-4 md:px-8 lg:px-16 h-[calc(90vh-80px)] flex items-center justify-center">
         <div className="relative group w-full flex justify-center items-center">
             <div className="absolute inset-0 pointer-events-none flex justify-center items-center" data-aos="fade-up" data-aos-duration="1500">

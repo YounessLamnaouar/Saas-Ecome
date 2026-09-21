@@ -11,7 +11,6 @@ import Navbar from "../components/Navbar";
 export default function Home() {
   return (
     <>
-      <Navbar transparent={false} bg="bg-amber-600" />
       <Hero />
       <Category />
       <Order />

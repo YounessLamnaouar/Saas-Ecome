@@ -22,10 +22,7 @@ export default function Footer() {
                         <span className="text-xs align-top ml-0.5">@</span>
                     </h2>
                     <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                        Lorem ipsum dolor sit, amet consectetur 
-                        adipisicing elit. Aliquid 
-                        sit recusandae numquam earum quae minus 
-                        voluptas rerum dolorum illum commodi.
+                        Discover the latest fashion trends for men, women, and kids. We bring you carefully selected styles that combine quality, comfort, and modern design — all in one place.
                     </p>
                     <div className="flex gap-3">
                         {socialIcons.map((e, i) => (
@@ -96,7 +93,7 @@ export default function Footer() {
                             Subscribe to Newsletter
                         </h3>
                         <p className="text-gray-400 text-sm">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, in!
+                            Stay up to date with our latest collections, exclusive offers, and fashion inspiration. Subscribe to our newsletter and never miss a new trend.
                         </p>
                     </div>
                     <div className="flex w-full md:w-auto">
@@ -112,7 +109,7 @@ export default function Footer() {
                     <span>@ 2026 Fashion. All rights reserved.</span>
                     <span className="flex items-center gap-2">
                         Made with <Heart size={14} className="text-red-500 fill-red-500" />
-                        by Fashion Store
+                        by Youness LAMNAOUAR
                     </span>
                 </p>
             </div>
