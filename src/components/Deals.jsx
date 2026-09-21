@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
@@ -9,7 +9,48 @@ export default function Deals() {
   const { addToCart } = useCart();
   const dealProduct = products[18]; // Joggers
   const featuredProducts = [products[0], products[1], products[4]];
-  const timerNumbers = ["2", "7", "41", "43"];
+  const date = new Date();
+  
+  const [timerNumbers, setTimerNumbers] = useState([]);
+
+useEffect(() => {
+  const targetDate = new Date("2026-12-31T23:59:59");
+
+  const updateTimer = () => {
+    const now = new Date();
+    const difference = targetDate - now;
+
+    if (difference <= 0) {
+      setTimerNumbers(["00", "00", "00", "00"]);
+      return;
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (difference / (1000 * 60 * 60)) % 24
+    );
+    const minutes = Math.floor(
+      (difference / (1000 * 60)) % 60
+    );
+    const seconds = Math.floor(
+      (difference / 1000) % 60
+    );
+
+    setTimerNumbers([
+      String(days).padStart(2, "0"),
+      String(hours).padStart(2, "0"),
+      String(minutes).padStart(2, "0"),
+      String(seconds).padStart(2, "0"),
+    ]);
+  };
+
+  updateTimer();
+
+  const interval = setInterval(updateTimer, 1000);
+
+  return () => clearInterval(interval);
+}, []);
+
   const timerLabels = ["Days", "Hours", "Mins", "Secs"];
 
   return (
